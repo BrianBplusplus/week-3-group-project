@@ -1,5 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=News+Cycle&display=swap");
+
 body {
   text-align: center;
-  /* border: solid black 2px; */
-  /* height: 100vh; */
+  font-family: "News Cycle", sans-serif;
+  color: #3a3e3f;
+  margin: 0;
+  align-content: center;
+}
+
+.newsitem {
+  border: 1px solid #3a3e3f;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  width: 50%;
+}
+
+.App-header {
+  height: 10vh;
+  background-color: gray;
+  padding: 0px;
+  min-width: 100%;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+footer {
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

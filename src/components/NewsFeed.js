@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 class NewsFeed extends Component {
   render() {
     return (
-      <div>
+      <div className="newsitem">
         <h2>{this.props.heading}</h2>
         <p>{this.props.description}</p>
       </div>
