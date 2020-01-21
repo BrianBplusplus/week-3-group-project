@@ -1,23 +1,32 @@
 import React from "react";
 import { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import NewsArticle from "./NewsArticle";
+
+const trump = "rotterdam";
 
 class NewsFeed extends Component {
   state = {
-    title: "",
-    description: ""
+    data: []
   };
 
   componentDidMount() {
     fetch(
-      "https://newsapi.org/v2/everything?q=bitcoin&from=2019-12-21&sortBy=publishedAt&apiKey=41f62212190b4ef68512cf121cfc796b"
+      `https://newsapi.org/v2/everything?q=${trump}&from=2019-12-21&sortBy=publishedAt&apiKey=41f62212190b4ef68512cf121cfc796b`
     )
       .then(response => response.json())
       .then(news => {
-        console.log(news);
+        const newsList = news.articles.map((item, index) => {
+          return (
+            <NewsArticle
+              key={index}
+              title={item.title}
+              description={item.description}
+            />
+          );
+        });
         this.setState({
-          title: news.articles[0].title,
-          description: news.articles[0].description
+          data: newsList.slice(0, 9)
         });
       })
       .catch(err => {
@@ -26,24 +35,8 @@ class NewsFeed extends Component {
   }
 
   render() {
-    //console.log("checkcing this.state", this.state);
-    return (
-      <div className="newsitem">
-        <h2>{this.state.title}</h2>
-        <p>{this.state.description}</p>
-      </div>
-    );
+    return <div>{this.state.data}</div>;
   }
 }
-
-NewsFeed.propTypes = {
-  heading: PropTypes.string,
-  description: PropTypes.string
-};
-
-NewsFeed.defaultProps = {
-  heading: "This needs to be the headline",
-  description: "Description goes here"
-};
 
 export default NewsFeed;
