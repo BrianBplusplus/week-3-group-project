@@ -12,7 +12,7 @@ class NewsFeed extends Component {
 
   componentDidMount() {
     fetch(
-      `https://newsapi.org/v2/everything?q=${trump}&from=2019-12-21&sortBy=publishedAt&apiKey=41f62212190b4ef68512cf121cfc796b`
+      `https://newsapi.org/v2/everything?q=${trump}&from=2019&sortBy=publishedAt&apiKey=41f62212190b4ef68512cf121cfc796b`
     )
       .then(response => response.json())
       .then(news => {
@@ -26,7 +26,7 @@ class NewsFeed extends Component {
           );
         });
         this.setState({
-          data: newsList.slice(0, 9)
+          data: newsList.slice(0, 1)
         });
       })
       .catch(err => {

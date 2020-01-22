@@ -23,18 +23,12 @@ body {
   min-width: 100%;
 }
 
-/*
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
-}
-*/
 footer {
-  background-color: green;
-  position: absolute;
+  position: relative;
+  left: 0;
   bottom: 0;
   width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }
