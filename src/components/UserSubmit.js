@@ -8,7 +8,7 @@ class UserSubmit extends Component {
         <form>
           <input type="text" placeholder="Enter headline here"></input>
           <br></br>
-          <input type="textarea" placeholder="The description"></input>
+          <textarea placeholder="The description"></textarea>
           <br></br>
           <button>Submit!</button>
         </form>

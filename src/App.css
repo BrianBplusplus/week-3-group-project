@@ -8,6 +8,10 @@ body {
   align-content: center;
 }
 
+h2 {
+  margin: 0;
+}
+
 .newsitem {
   border: 1px solid #3a3e3f;
   border-radius: 5px;
@@ -31,4 +35,18 @@ footer {
   background-color: red;
   color: white;
   text-align: center;
+}
+
+.newsarticle {
+  margin-bottom: 1rem;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 0.5rem;
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 5px;
+  background-color: #eaeaea;
+}
+
+.alignleft {
+  text-align: justify;
 }

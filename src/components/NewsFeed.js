@@ -1,32 +1,25 @@
 import React from "react";
 import { Component } from "react";
-// import PropTypes from "prop-types";
 import NewsArticle from "./NewsArticle";
-
-const trump = "rotterdam";
+import "../App.css";
 
 class NewsFeed extends Component {
   state = {
-    data: []
+    newsArticles: []
   };
 
   componentDidMount() {
     fetch(
-      `https://newsapi.org/v2/everything?q=${trump}&from=2019&sortBy=publishedAt&apiKey=41f62212190b4ef68512cf121cfc796b`
+      `https://newsapi.org/v2/everything?q=reactJS&from=2019&sortBy=publishedAt&language=en&apiKey=41f62212190b4ef68512cf121cfc796b`
     )
       .then(response => response.json())
       .then(news => {
-        const newsList = news.articles.map((item, index) => {
-          return (
-            <NewsArticle
-              key={index}
-              title={item.title}
-              description={item.description}
-            />
-          );
+        const likeNews = news.articles.map(article => {
+          const likecount = Math.floor(Math.random() * 6);
+          return { ...article, likes: likecount };
         });
         this.setState({
-          data: newsList.slice(0, 1)
+          newsArticles: likeNews
         });
       })
       .catch(err => {
@@ -34,8 +27,52 @@ class NewsFeed extends Component {
       });
   }
 
+  increaseLikes = title => {
+    const likedData = this.state.newsArticles.map(article => {
+      if (article.title === title) {
+        return { ...article, likes: article.likes + 1 };
+      } else {
+        return article;
+      }
+    });
+    this.setState({
+      newsArticles: likedData
+    });
+  };
+
+  decreaseLikes = title => {
+    const likedData = this.state.newsArticles.map(article => {
+      if (article.title === title && article.likes > 0) {
+        return { ...article, likes: article.likes - 1 };
+      } else {
+        return article;
+      }
+    });
+    this.setState({
+      newsArticles: likedData
+    });
+  };
+
   render() {
-    return <div>{this.state.data}</div>;
+    const articles_copy = [...this.state.newsArticles];
+    articles_copy.sort((a, b) => b.likes - a.likes);
+    console.log("articles copy", articles_copy);
+    return (
+      <div>
+        {articles_copy.slice(0, 5).map((item, index) => {
+          return (
+            <NewsArticle
+              key={index}
+              title={item.title}
+              description={item.description}
+              likes={item.likes}
+              increaseLikes={this.increaseLikes}
+              decreaseLikes={this.decreaseLikes}
+            />
+          );
+        })}
+      </div>
+    );
   }
 }
 

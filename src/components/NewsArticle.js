@@ -1,33 +1,22 @@
 import React, { Component } from "react";
 
 export default class NewsArticle extends Component {
-  // console.log(props);
-  state = {
-    likes: 0
+  handleLike = () => {
+    this.props.increaseLikes(this.props.title);
   };
 
-  addLike = () => {
-    this.setState({
-      likes: this.state.likes + 1
-    });
-  };
-
-  addDislike = () => {
-    if (this.state.likes > 0) {
-      this.setState({
-        likes: this.state.likes - 1
-      });
-    }
+  handleDislike = () => {
+    this.props.decreaseLikes(this.props.title);
   };
 
   render() {
     return (
-      <div>
+      <div className="newsarticle">
         <h2>{this.props.title}</h2>
-        <p>{this.props.description}</p>
-        <p>{this.state.likes}</p>
-        <button onClick={this.addLike}>Like</button>
-        <button onClick={this.addDislike}>Dislike</button>
+        <p className="alignleft">{this.props.description}</p>
+        <p>{this.props.likes}</p>
+        <button onClick={this.handleLike}>Like</button>
+        <button onClick={this.handleDislike}>Dislike</button>
       </div>
     );
   }
