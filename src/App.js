@@ -10,6 +10,7 @@ function App() {
         <h1 className="newsfeedHeader">DILIP BRIAN NEWSFEED APP</h1>
       </header>
       <NewsFeed />
+
       {/* <div className="right"></div> */}
       <UserSubmit />
       <footer>This will be the footer</footer>
