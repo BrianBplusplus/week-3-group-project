@@ -18,7 +18,9 @@ export default class NewsArticle extends Component {
         <p>{this.props.likes}</p>
         <button onClick={this.handleLike}>Like</button>
         <button onClick={this.handleDislike}>Dislike</button>
-        <Link to={`/details/${this.props.title}`}>Read more</Link>
+        <Link to={`/details/${this.props.title.replace(/\s+/g, "")}`}>
+          Read more
+        </Link>
       </div>
     );
   }
