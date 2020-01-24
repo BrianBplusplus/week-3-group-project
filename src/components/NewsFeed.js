@@ -9,8 +9,10 @@ class NewsFeed extends Component {
   };
 
   componentDidMount() {
+    const api_key = "41f62212190b4ef68512cf121cfc796b";
+    const article_language = "us";
     fetch(
-      `https://newsapi.org/v2/everything?q=reactJS&from=2019&sortBy=publishedAt&language=en&apiKey=41f62212190b4ef68512cf121cfc796b`
+      `https://newsapi.org/v2/top-headlines?country=${article_language}&apiKey=${api_key}`
     )
       .then(response => response.json())
       .then(news => {

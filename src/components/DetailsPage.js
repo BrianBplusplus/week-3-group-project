@@ -6,8 +6,10 @@ export default class DetailsPage extends Component {
     article: {}
   };
   componentDidMount() {
+    const api_key = "41f62212190b4ef68512cf121cfc796b";
+    const article_language = "us";
     fetch(
-      `https://newsapi.org/v2/everything?q=reactJS&from=2019&sortBy=publishedAt&language=en&apiKey=41f62212190b4ef68512cf121cfc796b`
+      `https://newsapi.org/v2/top-headlines?country=${article_language}&apiKey=${api_key}`
     )
       .then(response => response.json())
       .then(news => {
@@ -30,6 +32,7 @@ export default class DetailsPage extends Component {
         <p>This is the details page</p>
         <h2>{title}</h2>
         <h3>{author}</h3>
+        <img src={urlToImage} />
         <p>{content}</p>
         <a href={url}>Go to source</a>
         <Link to="/"> Go to Home screen</Link>
